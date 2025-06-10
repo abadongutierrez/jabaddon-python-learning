@@ -1,0 +1,88 @@
+{
+  "type": "function",
+  "function": {
+    "name": "get_v1forecast",
+    "description": "Get a 7-day weather forecast for specific coordinates. This function provides detailed weather information including temperature, humidity, wind, precipitation, and more. The forecast is available in both hourly and daily resolutions.",
+    "parameters": {
+      "type": "object",
+      "properties": {
+        "latitude": {
+          "type": "number",
+          "description": "WGS84 latitude coordinate (-90 to 90 degrees)"
+        },
+        "longitude": {
+          "type": "number",
+          "description": "WGS84 longitude coordinate (-180 to 180 degrees)"
+        },
+        "hourly": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "temperature_2m",
+              "relative_humidity_2m",
+              "dew_point_2m",
+              "apparent_temperature",
+              "pressure_msl",
+              "cloud_cover",
+              "wind_speed_10m",
+              "wind_direction_10m",
+              "wind_gusts_10m",
+              "precipitation",
+              "weather_code",
+              "snow_height"
+            ]
+          },
+          "description": "List of hourly weather variables to include in the response"
+        },
+        "daily": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "temperature_2m_max",
+              "temperature_2m_min",
+              "apparent_temperature_max",
+              "apparent_temperature_min",
+              "precipitation_sum",
+              "precipitation_hours",
+              "weather_code",
+              "sunrise",
+              "sunset",
+              "wind_speed_10m_max",
+              "wind_gusts_10m_max",
+              "wind_direction_10m_dominant"
+            ]
+          },
+          "description": "List of daily weather variables to include in the response"
+        },
+        "current_weather": {
+          "type": "boolean",
+          "description": "Include current weather conditions in the response. True or False (as python boolean)"
+        },
+        "temperature_unit": {
+          "type": "string",
+          "enum": ["celsius", "fahrenheit"],
+          "description": "Unit for temperature values",
+          "default": "celsius"
+        },
+        "wind_speed_unit": {
+          "type": "string",
+          "enum": ["kmh", "ms", "mph", "kn"],
+          "description": "Unit for wind speed values",
+          "default": "kmh"
+        },
+        "timezone": {
+          "type": "string",
+          "description": "Time zone for the response data (e.g., 'America/New_York', 'Europe/London')"
+        },
+        "past_days": {
+          "type": "integer",
+          "enum": [1, 2],
+          "description": "Include weather data for past days (1 or 2 days)"
+        }
+      },
+      "required": ["latitude", "longitude"]
+    }
+  }
+}
