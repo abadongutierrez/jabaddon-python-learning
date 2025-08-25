@@ -14,9 +14,36 @@ This project contains basic Python learning exercises organized with Poetry for 
    poetry install
    ```
 
-3. Activate the virtual environment:
+3. Working with the virtual environment:
+   
+   You have two options:
+
+   a. Run commands directly with poetry:
+   ```bash
+   poetry run python your_script.py
+   ```
+
+   b. If you need an interactive shell, use:
    ```bash
    poetry shell
+   ```
+
+   c. Alternative method to activate the virtual environment:
+   ```bash
+   source $(poetry env info --path)/bin/activate
+   ```
+   This command directly activates Poetry's virtual environment using its path.
+   
+4. Deactivating the virtual environment:
+   
+   If you used `poetry shell`:
+   ```bash
+   exit
+   ```
+   
+   If you used the direct activation method:
+   ```bash
+   deactivate
    ```
 
 ## Running the Code
@@ -24,25 +51,6 @@ This project contains basic Python learning exercises organized with Poetry for 
 To run the string exercises:
 ```bash
 poetry run python src/strings.py
-```
-
-## Functions
-
-### `reverse_string(text)`
-Reverses a string using Python's slice notation.
-
-**Parameters:**
-- `text` (str): The string to reverse
-
-**Returns:**
-- `str`: The reversed string
-
-**Example:**
-```python
-from src.strings import reverse_string
-
-result = reverse_string("Hello Python!")
-print(result)  # Output: !nohtyP olleH
 ```
 
 ## Testing
@@ -62,32 +70,3 @@ Run specific test file:
 poetry run pytest tests/test_strings.py -v
 ```
 
-## Project Structure
-
-```
-├── src/
-│   ├── __init__.py
-│   └── strings.py          # String manipulation exercises and functions
-├── tests/
-│   ├── __init__.py
-│   └── test_strings.py     # Test cases for string functions
-├── pyproject.toml          # Poetry configuration and dependencies
-└── README.md              # This file
-```
-
-## Development
-
-This project includes development dependencies for code quality:
-- `pytest` for testing
-- `black` for code formatting
-- `flake8` for linting
-
-To format code:
-```bash
-poetry run black src/ tests/
-```
-
-To lint code:
-```bash
-poetry run flake8 src/ tests/
-```
