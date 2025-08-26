@@ -53,3 +53,7 @@ print("1, 2, 3, 4, 5".split(", "))
 
 list2 = list1[:] # clone the list
 print(list2)
+
+a = [1, 2, 3]
+a = set(a)
+print(a)

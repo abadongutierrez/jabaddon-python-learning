@@ -105,3 +105,9 @@ print("Sine values:", y)
 #     plt.xlim(-2, 2)#set the xlim to left(-2), right(2)
 
 # Plotvec1(u, z, v)
+
+a=np.array([0,1,0,1,0]) 
+
+b=np.array([1,0,1,0,1]) 
+
+print(a*b)
