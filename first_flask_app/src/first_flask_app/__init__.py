@@ -2,6 +2,8 @@ import os
 from flask import Flask, jsonify
 from .config import config_by_name
 from .routes.main import main
+from .routes.health import health
+from .routes.courses import course
 
 def create_app(config_name=None):
     if config_name is None:
@@ -11,6 +13,8 @@ def create_app(config_name=None):
     app.config.from_object(config_by_name[config_name])
     
     app.register_blueprint(main)
+    app.register_blueprint(health)
+    app.register_blueprint(course)
     
     @app.errorhandler(404)
     def not_found(error):
@@ -20,4 +24,18 @@ def create_app(config_name=None):
     def internal_error(error):
         return jsonify({'error': 'Internal server error'}), 500
     
+    @app.errorhandler(Exception)
+    def unhandled_exception(e):
+        return jsonify({'error': str(e)}), 500
+
+    @app.before_request
+    def before_request():
+        # You can add code here to run before each request
+        pass
+
+    @app.after_request
+    def after_request(response):
+        # You can add code here to run after each request
+        return response
+
     return app
