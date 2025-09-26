@@ -4,6 +4,7 @@ from .config import config_by_name
 from .routes.main import main
 from .routes.health import health
 from .routes.courses import course
+from .routes.todo import todo_bp
 
 def create_app(config_name=None):
     if config_name is None:
@@ -15,6 +16,7 @@ def create_app(config_name=None):
     app.register_blueprint(main)
     app.register_blueprint(health)
     app.register_blueprint(course)
+    app.register_blueprint(todo_bp)
     
     @app.errorhandler(404)
     def not_found(error):

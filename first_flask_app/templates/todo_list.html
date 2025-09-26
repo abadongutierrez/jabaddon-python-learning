@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        .container { background: #f5f5f5; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+        .todo-item { background: white; padding: 15px; margin: 10px 0; border-radius: 5px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+        .todo-item.completed { opacity: 0.7; text-decoration: line-through; }
+        .todo-form { display: flex; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+        .todo-form input, .todo-form textarea { padding: 8px; border: 1px solid #ddd; border-radius: 4px; }
+        .todo-form input[type="text"] { flex: 1; min-width: 200px; }
+        .todo-form textarea { flex: 1; min-width: 200px; height: 60px; resize: vertical; }
+        button { padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; }
+        .btn-primary { background: #007bff; color: white; }
+        .btn-success { background: #28a745; color: white; }
+        .btn-danger { background: #dc3545; color: white; }
+        .btn-warning { background: #ffc107; color: black; }
+        .btn-small { padding: 4px 8px; font-size: 12px; margin-right: 5px; }
+        .filter-nav { margin-bottom: 20px; }
+        .filter-nav a { margin-right: 10px; padding: 5px 10px; text-decoration: none; border-radius: 4px; }
+        .filter-nav a.active { background: #007bff; color: white; }
+        .flash-messages { margin-bottom: 20px; }
+        .flash-message { padding: 10px; border-radius: 4px; margin-bottom: 10px; }
+        .flash-success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .flash-error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .todo-meta { font-size: 12px; color: #666; margin-top: 10px; }
+        .edit-form { display: none; margin-top: 10px; }
+        .edit-form.active { display: block; }
+    </style>
+</head>
+<body>
+    <h1>Todo List Manager</h1>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <div class="flash-messages">
+                {% for category, message in messages %}
+                    <div class="flash-message flash-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    {% endwith %}
+
+    <!-- Filter Navigation -->
+    <div class="filter-nav">
+        <a href="{{ url_for('todo.list_todos') }}"
+           class="{% if not current_filter %}active{% endif %}">All</a>
+        <a href="{{ url_for('todo.list_todos', filter='pending') }}"
+           class="{% if current_filter == 'pending' %}active{% endif %}">Pending</a>
+        <a href="{{ url_for('todo.list_todos', filter='completed') }}"
+           class="{% if current_filter == 'completed' %}active{% endif %}">Completed</a>
+    </div>
+
+    <!-- Create New Todo -->
+    <div class="container">
+        <h3>Add New Todo</h3>
+        <form method="POST" action="{{ url_for('todo.create_todo_item') }}">
+            <div class="todo-form">
+                <input type="text" name="title" placeholder="Todo title..." required>
+                <textarea name="description" placeholder="Description (optional)"></textarea>
+                <button type="submit" class="btn-primary">Add Todo</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Todo List -->
+    <div class="container">
+        <h3>Your Todos ({{ todos|length }})</h3>
+
+        {% if todos %}
+            {% for todo in todos %}
+                <div class="todo-item {% if todo.completed %}completed{% endif %}">
+                    <div style="display: flex; justify-content: between; align-items: start;">
+                        <div style="flex: 1;">
+                            <h4>{{ todo.title }}</h4>
+                            {% if todo.description %}
+                                <p>{{ todo.description }}</p>
+                            {% endif %}
+                            <div class="todo-meta">
+                                Created: {{ todo.created_at }} | Updated: {{ todo.updated_at }} |
+                                Status: {% if todo.completed %}✅ Completed{% else %}⏳ Pending{% endif %}
+                            </div>
+                        </div>
+
+                        <div style="margin-left: 20px;">
+                            <!-- Toggle Complete -->
+                            <form method="POST" action="{{ url_for('todo.toggle_todo', todo_id=todo.id) }}" style="display: inline;">
+                                <button type="submit" class="btn-small {% if todo.completed %}btn-warning{% else %}btn-success{% endif %}">
+                                    {% if todo.completed %}Mark Pending{% else %}Mark Complete{% endif %}
+                                </button>
+                            </form>
+
+                            <!-- Edit Button -->
+                            <button onclick="toggleEdit({{ todo.id }})" class="btn-small btn-primary">Edit</button>
+
+                            <!-- Delete -->
+                            <form method="POST" action="{{ url_for('todo.delete_todo', todo_id=todo.id) }}"
+                                  style="display: inline;"
+                                  onsubmit="return confirm('Are you sure you want to delete this todo?')">
+                                <button type="submit" class="btn-small btn-danger">Delete</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Edit Form (hidden by default) -->
+                    <div id="edit-form-{{ todo.id }}" class="edit-form">
+                        <h5>Edit Todo</h5>
+                        <form method="POST" action="{{ url_for('todo.update_todo', todo_id=todo.id) }}">
+                            <div class="todo-form">
+                                <input type="text" name="title" value="{{ todo.title }}" required>
+                                <textarea name="description">{{ todo.description }}</textarea>
+                                <label>
+                                    <input type="checkbox" name="completed" {% if todo.completed %}checked{% endif %}>
+                                    Completed
+                                </label>
+                                <button type="submit" class="btn-success">Update</button>
+                                <button type="button" onclick="toggleEdit({{ todo.id }})" class="btn-warning">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>No todos found. Add one above to get started!</p>
+        {% endif %}
+    </div>
+
+    <script>
+        function toggleEdit(todoId) {
+            const editForm = document.getElementById('edit-form-' + todoId);
+            editForm.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
