@@ -1,0 +1,26 @@
+[project]
+name = "image-captioning-ai"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Rafael Gutierrez",email = "abadon.gutierrez@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.13,<3.14"
+dependencies = [
+    "langchain (==0.1.11)",
+    "gradio (==5.23.2)",
+    "transformers (==4.38.2)",
+    "bs4 (==0.0.2)",
+    "requests (==2.31.0)",
+    "torch (==2.8.0)",
+    "pillow (==11.3.0)"
+]
+
+[tool.poetry]
+packages = [{include = "image_captioning_ai", from = "src"}]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
