@@ -1,0 +1,39 @@
+# Project metadata and configuration
+# This section defines the core project information following PEP 621 standards
+[project]
+# The name of your package (used when installing/importing)
+name = "simple-chatbot"
+# Semantic versioning: MAJOR.MINOR.PATCH
+version = "0.1.0"
+# Brief description of what your project does
+description = ""
+# List of project maintainers/contributors
+authors = [
+    {name = "Rafael Gutierrez",email = "abadon.gutierrez@gmail.com"}
+]
+# Path to the README file (displayed on PyPI if published)
+readme = "README.md"
+# Minimum Python version required to run this project
+requires-python = ">=3.13,<4.0"
+# Runtime dependencies that will be installed with your package
+dependencies = [
+    "transformers>=4.30.2",  # Hugging Face library for NLP models
+    "torch>=2.0.0",          # PyTorch deep learning framework
+    "flask (>=3.1.2,<4.0.0)",
+    "flask-cors (>=6.0.1,<7.0.0)",
+]
+
+# Poetry-specific configuration
+# Tells Poetry where to find the package source code
+[tool.poetry]
+# Specifies that the package "simple_chatbot" is located in the "src" directory
+packages = [{include = "simple_chatbot", from = "src"}]
+
+
+# Build system configuration
+# Defines how the project should be built and what tools are needed
+[build-system]
+# Build dependencies required to build the package
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+# The build backend that will be used (Poetry in this case)
+build-backend = "poetry.core.masonry.api"

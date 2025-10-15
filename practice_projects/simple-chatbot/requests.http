@@ -1,0 +1,18 @@
+### POST request to chatbot
+POST http://localhost:5001/chatbot
+Content-Type: application/json
+
+{
+  "prompt": "Hello, how are you doing?"
+}
+
+### POST request with a different prompt
+POST http://localhost:5001/chatbot
+Content-Type: application/json
+
+{
+  "prompt": "What's the weather like today?"
+}
+
+### GET request to home
+GET http://localhost:5001/
