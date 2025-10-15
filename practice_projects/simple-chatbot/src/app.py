@@ -1,15 +1,21 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_cors import CORS
 import json
 import simple_chatbot
 from flask import request
+import os
 
-app = Flask(__name__)
+# Get the directory of this file
+basedir = os.path.abspath(os.path.dirname(__file__))
+
+app = Flask(__name__,
+            template_folder=os.path.join(basedir, 'templates'),
+            static_folder=os.path.join(basedir, 'static'))
 CORS(app)
 
 @app.route('/')
 def home():
-    return 'Hello, World!'
+    return render_template('index.html')
 
 @app.route('/bananas')
 def bananas():
@@ -26,10 +32,11 @@ def handle_chatbot():
     data = json.loads(data)
     input_text = data.get('prompt', '')
 
-    simple_chatbot.chat(input_text)
+    # Get response from chatbot
+    response = simple_chatbot.chat(input_text)
 
     return json.dumps({
-        'response': simple_chatbot.get_conversation_history()[-1] if simple_chatbot.get_conversation_history() else '',
+        'response': response if response else '',
         'conversation_history': simple_chatbot.get_conversation_history()
     }) 
 
