@@ -1,0 +1,21 @@
+[project]
+name = "llm-tool-calls-pydantic-json"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Rafael Gutierrez",email = "abadon.gutierrez@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.13,<4.0.0"
+dependencies = [
+    "pydantic (>=2.12.3,<3.0.0)",
+    "langchain-openai (>=1.0.1,<2.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "llm_tool_calls_pydantic_json", from = "src"}]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
