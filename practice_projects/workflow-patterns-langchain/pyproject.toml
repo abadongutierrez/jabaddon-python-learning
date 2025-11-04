@@ -1,0 +1,24 @@
+[project]
+name = "workflow-patterns-langchain"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Rafael Gutierrez",email = "abadon.gutierrez@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.13,<4.0.0"
+dependencies = [
+    "langchain-openai (>=1.0.2,<2.0.0)",
+    "langgraph (>=1.0.2,<2.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "workflow_patterns_langchain", from = "src"}]
+
+
+[tool.poetry.group.dev.dependencies]
+ipykernel = "^7.1.0"
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
