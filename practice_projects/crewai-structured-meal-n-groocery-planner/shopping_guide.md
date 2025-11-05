@@ -3,42 +3,27 @@
   "total_budget": "$25",
   "meal_plans": [
     {
-      "meal_name": "Easy Low Sodium Chicken Stir Fry",
+      "meal_name": "Easy Nut-Free Chicken Stir Fry",
       "difficulty_level": "Easy",
       "servings": 4,
       "researched_ingredients": [
-        "1.5 lbs boneless, skinless chicken breasts (or thighs), cut into bite-sized pieces",
-        "1 tbsp olive oil",
+        "1 lb boneless, skinless chicken breasts, cut into bite-sized pieces",
+        "1 tbsp vegetable oil",
         "1 onion, sliced",
+        "2 carrots, sliced",
+        "1 red bell pepper, sliced",
+        "1 (14 oz) can of sliced mushrooms, drained (low sodium)",
+        "1 cup broccoli florets",
         "2 cloves garlic, minced",
-        "1 bell pepper (any color), sliced",
-        "1 cup broccoli florets (or frozen broccoli)",
-        "1 cup sliced carrots (or frozen carrots)",
-        "1 cup sliced sugar snap peas (or frozen peas)",
-        "2 tbsp low-sodium soy sauce (or coconut aminos for soy-free)",
-        "2 tbsp honey",
-        "1 tbsp rice vinegar",
-        "1 tsp sesame oil (optional, or use less)",
-        "1/2 tsp ground ginger",
-        "1/4 tsp black pepper",
-        "Cooked rice, for serving (brown or white)",
-        "Optional: Sesame seeds for garnish"
+        "1/4 cup low-sodium soy sauce (or tamari for gluten-free)",
+        "1 tbsp cornstarch",
+        "1 tbsp honey",
+        "1/2 cup low-sodium chicken broth",
+        "Cooked rice, for serving"
       ]
     }
   ],
   "shopping_sections": [
-    {
-      "section_name": "Meat",
-      "items": [
-        {
-          "name": "Boneless, skinless chicken breasts (or thighs)",
-          "quantity": "1.5 lbs",
-          "estimated_price": "$5-8",
-          "category": "Meat"
-        }
-      ],
-      "estimated_total": "$5-8"
-    },
     {
       "section_name": "Produce",
       "items": [
@@ -49,114 +34,105 @@
           "category": "Produce"
         },
         {
+          "name": "Carrots",
+          "quantity": "2 medium",
+          "estimated_price": "$0.50",
+          "category": "Produce"
+        },
+        {
+          "name": "Red Bell Pepper",
+          "quantity": "1 medium",
+          "estimated_price": "$1.00",
+          "category": "Produce"
+        },
+        {
+          "name": "Broccoli Florets",
+          "quantity": "1 cup",
+          "estimated_price": "$1.50",
+          "category": "Produce"
+        },
+        {
           "name": "Garlic",
           "quantity": "2 cloves",
           "estimated_price": "$0.20",
           "category": "Produce"
-        },
-        {
-          "name": "Bell pepper",
-          "quantity": "1",
-          "estimated_price": "$1",
-          "category": "Produce"
-        },
-        {
-          "name": "Broccoli florets (or frozen)",
-          "quantity": "1 cup",
-          "estimated_price": "$1-1.50",
-          "category": "Produce"
-        },
-        {
-          "name": "Carrots (or frozen)",
-          "quantity": "1 cup sliced",
-          "estimated_price": "$0.50-0.75",
-          "category": "Produce"
-        },
-        {
-          "name": "Sugar snap peas (or frozen peas)",
-          "quantity": "1 cup",
-          "estimated_price": "$1-2",
-          "category": "Produce"
         }
       ],
-      "estimated_total": "$4.20-5.95"
+      "estimated_total": "$3.70"
+    },
+    {
+      "section_name": "Meat",
+      "items": [
+        {
+          "name": "Boneless, Skinless Chicken Breasts",
+          "quantity": "1 lb",
+          "estimated_price": "$5.00",
+          "category": "Meat"
+        }
+      ],
+      "estimated_total": "$5.00"
     },
     {
       "section_name": "Pantry",
       "items": [
         {
-          "name": "Olive oil",
-          "quantity": "1 tbsp",
-          "estimated_price": "(already have)",
+          "name": "Vegetable Oil",
+          "quantity": "Small amount (check pantry first)",
+          "estimated_price": "$0.00 - $3.00 (if needed)",
           "category": "Pantry"
         },
         {
-          "name": "Low-sodium soy sauce (or coconut aminos)",
-          "quantity": "2 tbsp",
-          "estimated_price": "$1.50-4",
+          "name": "Low-Sodium Soy Sauce",
+          "quantity": "1/4 cup",
+          "estimated_price": "$2.50",
+          "category": "Pantry"
+        },
+        {
+          "name": "Cornstarch",
+          "quantity": "1 tbsp",
+          "estimated_price": "$0.00 - $2.00 (check pantry first)",
           "category": "Pantry"
         },
         {
           "name": "Honey",
-          "quantity": "2 tbsp",
-          "estimated_price": "$1-2",
-          "category": "Pantry"
-        },
-        {
-          "name": "Rice vinegar",
           "quantity": "1 tbsp",
-          "estimated_price": "$1.50-3",
+          "estimated_price": "$0.00 - $3.00 (check pantry first)",
           "category": "Pantry"
         },
         {
-          "name": "Sesame oil",
-          "quantity": "1 tsp",
-          "estimated_price": "$2-5 (optional)",
+          "name": "Low-Sodium Chicken Broth",
+          "quantity": "1/2 cup",
+          "estimated_price": "$1.00",
           "category": "Pantry"
         },
         {
-          "name": "Ground ginger",
-          "quantity": "1/2 tsp",
-          "estimated_price": "$1-2",
-          "category": "Pantry"
-        },
-        {
-          "name": "Black pepper",
-          "quantity": "1/4 tsp",
-          "estimated_price": "(already have)",
-          "category": "Pantry"
-        },
-        {
-          "name": "Rice (brown or white)",
-          "quantity": "2 cups cooked",
-          "estimated_price": "$0 (already have) -3",
+          "name": "Rice",
+          "quantity": "For serving",
+          "estimated_price": "$3.00",
           "category": "Pantry"
         }
       ],
-      "estimated_total": "$8-19"
+      "estimated_total": "$9.50"
     },
     {
-      "section_name": "Optional",
+      "section_name": "Canned Goods",
       "items": [
         {
-          "name": "Sesame seeds",
-          "quantity": "For garnish",
-          "estimated_price": "$0 (omit if needed)-4",
-          "category": "Optional"
+          "name": "Sliced Mushrooms (Low Sodium)",
+          "quantity": "1 (14 oz) can",
+          "estimated_price": "$1.50",
+          "category": "Canned Goods"
         }
       ],
-      "estimated_total": "$0-4"
+      "estimated_total": "$1.50"
     }
   ],
   "shopping_tips": [
-    "Check for sales on chicken breasts or consider using chicken thighs, which are often cheaper.",
-    "Buy frozen vegetables (broccoli, carrots, peas) to save money and reduce prep time.",
-    "Use generic brands for soy sauce, honey, and rice vinegar to cut costs.",
-    "If sesame oil is too expensive, consider omitting it or using a smaller amount. It adds flavor but isn't essential.",
-    "Rice is a budget-friendly staple; buy in bulk if you use it often. Check if you already have rice before buying more.",
-    "Omit sesame seeds if necessary to stay within budget.",
-    "Consider buying a whole chicken and cutting it up yourself for potential savings.",
-    "Plan meals around ingredients you already have to minimize spending."
+    "Check your pantry for oil, cornstarch, and honey to avoid buying duplicates.",
+    "Buy store-brand soy sauce and chicken broth to save money.",
+    "Consider buying frozen broccoli florets, which can be cheaper than fresh.",
+    "If chicken is too expensive, use less chicken and add more vegetables or tofu. Consider using chicken thighs, which are often cheaper than chicken breasts, but be mindful of the fat content and trim accordingly.",
+    "Rice can be bought in bulk to save money if you use it frequently."
   ]
 }
 ```
