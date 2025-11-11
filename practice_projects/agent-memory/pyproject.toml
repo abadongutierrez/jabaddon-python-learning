@@ -1,0 +1,21 @@
+[project]
+name = "agent-memory"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Rafael Gutierrez",email = "abadon.gutierrez@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.13,<4.0"
+dependencies = [
+    "openai (>=2.7.2,<3.0.0)",
+    "letta-client (>=0.1.324,<0.2.0)"
+]
+
+[tool.poetry]
+packages = [{include = "agent_memory", from = "src"}]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
