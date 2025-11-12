@@ -1,0 +1,28 @@
+[project]
+name = "ai-powered-app-voice-assistant"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Rafael Gutierrez",email = "abadon.gutierrez@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.13,<4.0"
+dependencies = [
+    "openai-whisper (>=20250625,<20250626)",
+    "openai (>=2.7.2,<3.0.0)",
+    "gtts (>=2.5.0,<3.0.0)",
+    "pyttsx3 (>=2.90,<3.0)",
+    "pydub (>=0.25.1,<1.0.0)",
+    "audioop-lts (>=0.2.0,<1.0.0)",
+    "flask (>=3.1.2,<4.0.0)",
+    "flask-cors (>=6.0.1,<7.0.0)",
+    "requests (>=2.32.5,<3.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "ai_powered_app_voice_assistant", from = "src"}]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
