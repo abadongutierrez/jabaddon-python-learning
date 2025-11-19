@@ -1,0 +1,26 @@
+[project]
+name = "ai-powered-chatbot-with-your-data"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Rafael Gutierrez",email = "abadon.gutierrez@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.13,<3.15"
+dependencies = [
+    "langchain>=0.3.0",
+    "langchain-ollama>=0.1.0",
+    "langchain-community>=0.3.0",
+    "langchain-core>=0.3.0",
+    "pypdf>=5.2.0",
+    "chromadb==0.4.24",
+    "numpy<2.0.0",
+]
+
+[tool.poetry]
+packages = [{include = "ai_powered_chatbot_with_your_data", from = "src"}]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
